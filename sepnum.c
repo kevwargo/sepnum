@@ -3,6 +3,8 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <unistd.h>
+#include <getopt.h>
 
 int main(int argc, char **argv)
 {
