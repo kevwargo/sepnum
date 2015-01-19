@@ -11,7 +11,9 @@ int main(int argc, char **argv)
 {
     int groupsize = 3;
     char sepchar = '.';
-    
+    int maxseps = 0;
+    if (argc >= 2)
+        maxseps = atoi(argv[1]);
     int size;
     size_t allocated = 0;
     char *line = NULL;
@@ -32,6 +34,12 @@ int main(int argc, char **argv)
                 int numsize = 0;
                 while (isdigit(number[numsize]))
                     numsize++;
+                if (line[linecursor - 1] == ' ')
+                {
+                    int addspaces = maxseps - (numsize - 1) / groupsize;
+                    for (int i = 0; i < addspaces; i++)
+                        buffer[bufcursor++] = ' ';
+                }
                 if (numsize > groupsize)
                 {
                     int prefix = numsize % groupsize;
